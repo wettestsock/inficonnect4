@@ -1,14 +1,14 @@
 #pragma once
 #define N '\n'
-
+#define NORIGHT false
+#define GORIGHT true
 
 void hello();
 
 typedef struct node {
     char disk;
-    node* right;
-    node* left;
-    node* down;            
+    node* down;
+    bool right;
 } node;
 
 class board{

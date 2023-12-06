@@ -7,9 +7,7 @@
 
 int main(){
     hello();
-    node* test = new node;
-    test->disk = 'Y';
-    std::cout << test->disk << N;
+    board a;
+    a.print();
 
-    std::cout<<"fkjdslgds" << N;
 }

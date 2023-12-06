@@ -18,30 +18,34 @@ void hello(){
 //just debug purposes, 6 rows 7 columns default
 board::board(): board(6, 7) {};
 
-board::board(const int& rowN, const int& columnN): topLeft(new node){
+board::board(const int& rowN, const int& columnN): \
+topLeft(new node{' ', NULL, NORIGHT})
+{
     node* c = topLeft;
-    for(int i=0; i<rowN; ++i){
-        
-
-        for (int z = 0; z < columnN; ++z)
+    for (int i = 0; i < columnN; i++)
+    {
+        for (int z = 0; z < rowN; z++)
         {
-            //SNAKE ITERATION
-            //if rowN is even then moves right, 
-            //if odd moves left
-            c->disk == ' ';
-            c = (rowN%2) ? c->right : c->left;
+            
+            c->down = new node({' ', NULL, NORIGHT});
+            c = c->down;
         }
-        //moves 1 down
-        c = c->down;
+        c->right = GORIGHT;
+        
+        
     }
+    
+
 
 }
 
 void board::print(){
     node* c = topLeft;
-    while(c->left)
-
-}
+    while(!c){
+        std::cout << c->down << c->right<< N;
+        c=c->down;
+    }
+};
 
 board::~board(){
 
