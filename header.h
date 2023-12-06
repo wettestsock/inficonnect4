@@ -8,6 +8,15 @@ typedef struct node {
     char disk;
     node* right;
     node* left;
-    node* below;
-
+    node* down;            
 } node;
+
+class board{
+    node* topLeft;
+    public:
+    board();
+    board(const int& rowN, const int& columnN);
+    void print();
+    ~board();
+
+};
