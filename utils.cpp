@@ -24,26 +24,28 @@ board::board(): board(6, 7) {};
 board::board(const unsigned int& r, const unsigned int& c):
 rowN(r), //inits the rows
 columnN(c), //inits the columns
-theBoard(new char*[rowN]) //memory for each row, columns will be also dynamically allocated
+the_board(new char*[rowN]) //memory for each row, columns will be also dynamically allocated
 {
     for (int i = 0; i < rowN; i++) {
-        theBoard[i] = new char[columnN]; //inits the columns
+        the_board[i] = new char[columnN]; //inits the column
+
         for (int z = 0; z < columnN; z++)
-        {
-            theBoard[i][z] = 'h'; //dereferences the double pointer
-        }
+            //assigns the characters in each column as blank
+            the_board[i][z] = ' '; //dereferences the double pointer
         
     }
 
 }
 
 void board::print(){
-    
+    for (int i=0; i<rowN; i++){
+
+    }
 };
 
 board::~board(){
     for (int i = 0; i < rowN; i++) 
-        delete theBoard[i]; //deletes each column
+        delete the_board[i]; //deletes each column
     
 
 }
@@ -52,14 +54,26 @@ void board::debug() {
     for (int i = 0; i < rowN; i++) {
         int z = 0;
         while(true){
-            if (theBoard[i][z] == '\0') {
+            if (the_board[i][z] == '\0') {
                 std::cout << "TERMINATION CHARACTER REACHED" << N;
                 break;
             }
-            std::cout << theBoard[i][z] << N;
+            std::cout << the_board[i][z] << N;
             z++;
         }
         
-        delete theBoard[i]; //deletes each column
+        delete the_board[i]; //deletes each column
     }
+}
+
+int board::digit_num(int number)
+{
+    int output = 0;
+    while(number/10)
+    {
+        output++;
+        number /= 10;
+    }
+    return output;
+
 }
