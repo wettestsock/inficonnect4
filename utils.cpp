@@ -24,6 +24,7 @@ board::board(): board(6, 7) {};
 board::board(const unsigned int& r, const unsigned int& c):
 rowN(r), //inits the rows
 columnN(c), //inits the columns
+offset(digit_num(r)), //inits the offset (printing purposes)
 the_board(new char*[rowN]) //memory for each row, columns will be also dynamically allocated
 {
     for (int i = 0; i < rowN; i++) {
@@ -75,18 +76,14 @@ int digit_num(int number)
 
 std::ostream& operator<<(std::ostream& out, board& input_brd){
     //offset space count for the print board, useful for displaying with 10+ columns
-    
     int offset = digit_num(input_brd.columnN);
-    for (int i = 0; i < input_brd.rowN; i++)
-    {
-        out << 
-    }
+
 
     for (int i = 0; i < input_brd.rowN; i++)
     {
         for (int z = 0; z < input_brd.columnN; z++)
         {
-            out << '| ' << input_brd.the_board[i][z];
+            out << "\t| " << input_brd.the_board[i][z];
             
             
         }

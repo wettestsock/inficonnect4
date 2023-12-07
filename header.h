@@ -12,9 +12,14 @@ class board{
 
     public:
     //global variables
-    //has to be a double pointer 
+
+
+    //offset is for printing purposes
+    //change offset only when resizing the board!!
+    int rowN, columnN, offset;
+
+    // board has to be a double pointer 
     //because the row and column sizes are dynamically allocated
-    unsigned int rowN, columnN;
     char** the_board;
 
     //constructors
