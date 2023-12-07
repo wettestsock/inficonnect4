@@ -88,6 +88,30 @@ void board::debug() {
     }
 }
 
+bool board::move_win(const int& col_pos, const char& player_id){
+    if (the_board[0][col_pos] != ' ')
+    {
+        std::cout<< "Column is full. Choose another one." << N;
+        return false;
+    }
+    
+
+    int row_pos = -1;
+    for(int i=0; i<rowN; ++i) {
+        if (the_board[i][col_pos] == ' ')
+        {
+            row_pos++;
+        } else break;
+        
+
+    }
+    
+    
+    the_board[row_pos][col_pos] = player_id;
+    return true;
+}
+
+
 
 
 

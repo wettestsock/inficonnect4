@@ -33,9 +33,8 @@ class board{
     ~board();
 
     //functions
-    void debug();
-
-    
+    bool move_win(const int& col_pos, const char& player_id);
+    void debug();  
 };
 
 //prints the table
