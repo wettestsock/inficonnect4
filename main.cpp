@@ -8,6 +8,6 @@
 int main(){
     hello();
     board a;
-    a.print();
+    std::cout << a;
 
 }

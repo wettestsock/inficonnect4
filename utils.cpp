@@ -37,12 +37,6 @@ the_board(new char*[rowN]) //memory for each row, columns will be also dynamical
 
 }
 
-void board::print(){
-    for (int i=0; i<rowN; i++){
-
-    }
-};
-
 board::~board(){
     for (int i = 0; i < rowN; i++) 
         delete the_board[i]; //deletes each column
@@ -66,9 +60,9 @@ void board::debug() {
     }
 }
 
-int board::digit_num(int number)
+int digit_num(int number)
 {
-    int output = 0;
+    int output = 1;
     while(number/10)
     {
         output++;
@@ -77,3 +71,27 @@ int board::digit_num(int number)
     return output;
 
 }
+
+
+std::ostream& operator<<(std::ostream& out, board& input_brd){
+    //offset space count for the print board, useful for displaying with 10+ columns
+    
+    int offset = digit_num(input_brd.columnN);
+    for (int i = 0; i < input_brd.rowN; i++)
+    {
+        out << 
+    }
+
+    for (int i = 0; i < input_brd.rowN; i++)
+    {
+        for (int z = 0; z < input_brd.columnN; z++)
+        {
+            out << '| ' << input_brd.the_board[i][z];
+            
+            
+        }
+        
+    }
+    
+
+};
