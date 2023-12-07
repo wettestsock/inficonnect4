@@ -37,5 +37,3 @@ class board{
 };
 
 std::ostream& operator<<(std::ostream& out, const board& input_brd);
-
-std::string operator*(const std::string& a, const int& num);

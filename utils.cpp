@@ -17,7 +17,7 @@ void hello(){
 }
 
 //just debug purposes, 6 rows 7 columns default
-board::board(): board(12, 7) {};
+board::board(): board(6, 7) {};
 
 
 //NOTE: EACH BOXY BRACKET DEREFERENCES THE POINTER FOR YOU
@@ -74,6 +74,7 @@ std::ostream& operator<<(std::ostream& out, const board& input_brd){
     //offset = (int)log10(x)
 
     
+    //inits the line 
     std::string line =  "         "; //for offsetting "COLUMNS: " text
     for (int i = 0; i < input_brd.columnN; i++)
     {
@@ -117,12 +118,4 @@ std::ostream& operator<<(std::ostream& out, const board& input_brd){
     return out;
     
 
-};
-
-//overloads strings, useful for repeating a character over and over
-//pass by value to modify in the code
-std::string operator*(std::string output, int num)
-{
-    while (num--) output += output;
-    return output;
 };
