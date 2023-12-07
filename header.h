@@ -10,11 +10,13 @@ void hello();
 class board{
     //has to be a double pointer 
     //because the row and column sizes are dynamically allocated
+    unsigned int rowN, columnN;
     char** theBoard;
     public:
     board();
-    board(const int& rowN, const int& columnN);
+    board(const unsigned int& r, const unsigned int& c);
     void print();
+    void debug();
     ~board();
     
 };
