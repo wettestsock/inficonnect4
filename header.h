@@ -2,6 +2,7 @@
 #define N '\n'
 #define T '\t'
 #include <iostream>
+#include <string>
 #define NORIGHT false
 #define GORIGHT true
 
@@ -18,7 +19,7 @@ class board{
 
     //offset is for printing purposes
     //change offset only when resizing the board!!
-    int rowN, columnN, offset;
+    int rowN, columnN;
 
     // board has to be a double pointer 
     //because the row and column sizes are dynamically allocated
@@ -34,6 +35,7 @@ class board{
 
     
 };
-int digit_num(int number);
 
 std::ostream& operator<<(std::ostream& out, const board& input_brd);
+
+std::string operator*(const std::string& a, const int& num);
