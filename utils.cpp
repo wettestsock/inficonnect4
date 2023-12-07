@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <cmath>
+#include <limits>
 
 /*
 OUTPUT :
@@ -26,11 +27,31 @@ board::board(const unsigned int& r, const unsigned int& c, std::vector<char> let
     // member initializer list
     rowN(r), //inits the rows
     columnN(c), //inits the columns
+    line("         "), //for offsetting "COLUMNS: " text
+    line_flat("         "), //for offsetting "COLUMNS: " text
     player_letters(letters), 
     the_board(new char*[rowN]) //memory for each row, columns will be also dynamically allocated
 
     //actual constructor
 {
+    //offset = (int)log10(x)
+
+    //lines, 1 init operation to set them
+    for (int i = 0; i < columnN; i++)
+    {
+        line+='|';
+        line_flat+='-';
+        for (int z = 0; z < (int)log10(i+1)+1; z++)
+        {
+            line+='-';
+            line_flat+='-';
+        }
+    }
+    line+='|';
+    line_flat+='|';
+    line_flat[9]='|';
+
+    
     for (int i = 0; i < rowN; i++) {
         the_board[i] = new char[columnN]; //inits the column
 
@@ -72,36 +93,23 @@ void board::debug() {
 
 
 std::ostream& operator<<(std::ostream& out, const board& input_brd){
-    //offset = (int)log10(x)
-
     
-    //inits the line 
-    std::string line =  "         "; //for offsetting "COLUMNS: " text
-    for (int i = 0; i < input_brd.columnN; i++)
-    {
-        line+='|';
-        for (int z = 0; z < (int)log10(i+1)+1; z++)
-        {
-            line.append("-");
-        }
-    }
-    line+='|';
 
 
     //prints the column numbers
-    out << line << N << "COLUMNS: ";
+    out << input_brd.line_flat << N << "COLUMNS: ";
     for (int i = 0; i < input_brd.columnN; i++)
     {
         out << '|' << i+1;
         
     }
-    out << '|' << N << line << N;
+    out << '|' << N;
 
 
     //prints the actual boxes
     for (int i = 0; i < input_brd.rowN; i++)
     {
-        out << "         "; //for offsetting "COLUMNS: " text
+        out << input_brd.line << N << "         "; //for offsetting "COLUMNS: " text
         for (int z = 0; z < input_brd.columnN; z++)
         {
             //prints the element box 
@@ -111,9 +119,17 @@ std::ostream& operator<<(std::ostream& out, const board& input_brd){
             for (int a = 0; a < (int)log10(z+1); a++) out << ' ';
         }
         //closes the printing row out
-        out << '|' << N << line << N;
+        out << '|' << N;
     }
+    out<< input_brd.line_flat << N;
     return out;
     
 
 };
+
+//clears the cin
+void cin_clear(std::istream& cin_out) {
+    cin_out.clear();
+    cin_out.ignore(std::numeric_limits<std::streamsize>::max(), N);
+};
+
