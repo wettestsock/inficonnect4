@@ -1,4 +1,4 @@
-    #include "header.h"
+#include "header.h"
 #include <iostream>
 #include <memory>
 #include <vector>
@@ -17,31 +17,38 @@ void hello(){
 }
 
 //just debug purposes, 6 rows 7 columns default
-board::board(): board(6, 7) {};
+board::board(): board(6, 11) {};
 
 
 //NOTE: EACH BOXY BRACKET DEREFERENCES THE POINTER FOR YOU
-board::board(const unsigned int& r, const unsigned int& c):
-rowN(r), //inits the rows
-columnN(c), //inits the columns
-offset(digit_num(r)), //inits the offset (printing purposes)
-the_board(new char*[rowN]) //memory for each row, columns will be also dynamically allocated
+board::board(const unsigned int& r, const unsigned int& c): 
+
+    // member initializer list
+    rowN(r), //inits the rows
+    columnN(c), //inits the columns
+    offset(digit_num(c)), //inits the offset (printing purposes)
+    the_board(new char*[rowN]) //memory for each row, columns will be also dynamically allocated
+
+    //actual constructor
 {
     for (int i = 0; i < rowN; i++) {
         the_board[i] = new char[columnN]; //inits the column
 
         for (int z = 0; z < columnN; z++)
             //assigns the characters in each column as blank
-            the_board[i][z] = ' '; //dereferences the double pointer
+            the_board[i][z] = 'g'; //dereferences the double pointer
         
     }
 
 }
 
 board::~board(){
+    //deallocates the board
     for (int i = 0; i < rowN; i++) 
         delete the_board[i]; //deletes each column
-    
+
+    //deletes the actual board
+    delete[] the_board;
 
 }
 
@@ -74,21 +81,26 @@ int digit_num(int number)
 }
 
 
-std::ostream& operator<<(std::ostream& out, board& input_brd){
-    //offset space count for the print board, useful for displaying with 10+ columns
-    int offset = digit_num(input_brd.columnN);
-
-
+std::ostream& operator<<(std::ostream& out, const board& input_brd){
     for (int i = 0; i < input_brd.rowN; i++)
     {
+        out << "         "; //for offsetting "COLUMNS: " text
         for (int z = 0; z < input_brd.columnN; z++)
         {
-            out << "\t| " << input_brd.the_board[i][z];
-            
+            //prints the element box 
+            out << "| " << input_brd.the_board[i][z];
+
+            //prints the offset (so printing of 10+ columns doesnt break)
+            for (int a = 0; a < input_brd.offset; a++)
+            {
+                out << ' ';
+            }
             
         }
-        
+        //closes the printing row out
+        out << '|' << N;
     }
+    return out;
     
 
 };

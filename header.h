@@ -1,5 +1,7 @@
 #pragma once
 #define N '\n'
+#define T '\t'
+#include <iostream>
 #define NORIGHT false
 #define GORIGHT true
 
