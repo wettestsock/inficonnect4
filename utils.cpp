@@ -10,8 +10,7 @@
 OUTPUT :
 cd coding/inficonnect4
 clang++ main.cpp utils.cpp -o out/out
-out/out
-*/
+2*/
 
 void hello(){
     std::cout<<"THOMAS" << N;
