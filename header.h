@@ -18,5 +18,5 @@ class board{
     board(const int& rowN, const int& columnN);
     void print();
     ~board();
-
+    
 };
