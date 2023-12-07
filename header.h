@@ -3,6 +3,7 @@
 #define T '\t'
 #include <iostream>
 #include <string>
+#include <vector>
 #define NORIGHT false
 #define GORIGHT true
 
@@ -20,14 +21,14 @@ class board{
     //offset is for printing purposes
     //change offset only when resizing the board!!
     int rowN, columnN;
-
+    std::vector<char> player_letters; 
     // board has to be a double pointer 
     //because the row and column sizes are dynamically allocated
     char** the_board;
 
     //constructors
     board();
-    board(const unsigned int& r, const unsigned int& c);
+    board(const unsigned int& r, const unsigned int& c, std::vector<char> letters);
     ~board();
 
     //functions

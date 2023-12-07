@@ -16,16 +16,17 @@ void hello(){
     std::cout<<"THOMAS" << N;
 }
 
-//just debug purposes, 6 rows 7 columns default
-board::board(): board(6, 7) {};
+//just debug purposes, 6 rows 12 columns, players a b c default
+board::board(): board(6, 12, {'a', 'b', 'c'}) {};
 
 
 //NOTE: EACH BOXY BRACKET DEREFERENCES THE POINTER FOR YOU
-board::board(const unsigned int& r, const unsigned int& c): 
+board::board(const unsigned int& r, const unsigned int& c, std::vector<char> letters): 
 
     // member initializer list
     rowN(r), //inits the rows
     columnN(c), //inits the columns
+    player_letters(letters), 
     the_board(new char*[rowN]) //memory for each row, columns will be also dynamically allocated
 
     //actual constructor
@@ -96,6 +97,7 @@ std::ostream& operator<<(std::ostream& out, const board& input_brd){
     }
     out << '|' << N << line << N;
 
+
     //prints the actual boxes
     for (int i = 0; i < input_brd.rowN; i++)
     {
@@ -106,11 +108,7 @@ std::ostream& operator<<(std::ostream& out, const board& input_brd){
             out << '|' << input_brd.the_board[i][z];
 
             //prints the offset (so printing of 10+ columns doesnt break)
-            for (int a = 0; a < (int)log10(z+1); a++)
-            {
-                out << ' ';
-            }
-            
+            for (int a = 0; a < (int)log10(z+1); a++) out << ' ';
         }
         //closes the printing row out
         out << '|' << N << line << N;
