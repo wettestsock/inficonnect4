@@ -5,14 +5,12 @@
 
 void hello();
 
-typedef struct node {
-    char disk;
-    node* down;
-    bool right;
-} node;
+
 
 class board{
-    node* topLeft;
+    //has to be a double pointer 
+    //because the row and column sizes are dynamically allocated
+    char** theBoard;
     public:
     board();
     board(const int& rowN, const int& columnN);
