@@ -66,8 +66,6 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
             std::cout<< "█"<< T << "(ex: "<< (char)toupper(temp[0]) << ", H, J, etc)"<< N << "█ Character identifier: ";
             std::cin>> temp;
 
-            
-
             if (in_list((char)toupper(temp[0]), char_id))
             {
                 std::cout<<"█ Duplicate character. Try again." << N;
