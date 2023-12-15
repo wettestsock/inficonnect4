@@ -1,6 +1,5 @@
-###   ____________________
-###    INFINITE CONNECT 4
-###   ____________________
+# THE THE INFINITE CONNECT 4
+# THE SEQUEL WE ALL DESERVED
 
 connect4 but expanded-
 - infinite rows and columns
