@@ -91,13 +91,11 @@ void board::debug() {
 }
 
 bool board::move_win(const int& col_pos, const char& player_id){
-    if (the_board[0][col_pos] != ' ')
-    {
-        std::cout<< "Column is full. Choose another one." << N;
-        return false;
-    }
     
+    // if hits 3 (connect 4) then wins
 
+    
+    //iterates till the last free block
     int row_pos = -1;
     for(int i=0; i<rowN; ++i) {
         if (the_board[i][col_pos] == ' ')
@@ -105,12 +103,36 @@ bool board::move_win(const int& col_pos, const char& player_id){
             row_pos++;
         } else break;
         
-
     }
-    
-    
+    //assigns the disc to the location
     the_board[row_pos][col_pos] = player_id;
-    return true;
+
+    /*
+
+    // accounts for overflows
+    // reference
+
+    int left_border = columnN - (columnN-col_pos);
+    int right_border = columnN - col_pos;
+    int up_border = rowN;
+    int down_border = rowN- row_pos;
+
+    */
+    int combo_ctr = 0; 
+
+    //makes sure the values dont overflow
+    for(int i=std::max(0, col_pos-3); i< std::min(columnN, col_pos+3); ++i) {
+            combo_ctr = (the_board[row_pos][i] == player_id) ? combo_ctr +1 : 0;
+
+            if (combo_ctr >= 4) {
+                std::cout << "CONNECT 4 HORIZONTALLY" << N;
+            }
+    }  
+
+
+
+    //default, no winner (duh)
+    return false;
 }
 
 

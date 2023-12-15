@@ -147,7 +147,7 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
 
     
     //MOVING !!!
-    for(int i=0; i<4; ++i) {
+    while(true) {
 
         //repeats for each player
         for (int i = 0; i < char_id.size(); i++)
@@ -159,22 +159,30 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
                 std::cout<<"█ " << name_id[i] << " (identifier " << char_id[i] << "), move: ";
                 std::cin>> move;
 
-                if(!std::cin)
+                //if invalid
+                if(!std::cin)  
                 {
                     std::cout<< "█ Invalid move. Try again." << N << "█" << N;
                     cin_clear(std::cin);
                     continue;
+                
+                // DEBUG, REMOVE LATER
                 }else if (move ==0) {
                     return 0;
-                
-                } else if (move < 1 || move > columns) {
+                //if input out of range
+                } else if (move < 1 || move > columns) {  
                     std::cout << "█ Out of range. Try again." << N << "█" << N;
+                    continue;
+                    
+                // if a column is full (top one is taken)
+                } else if (a.the_board[0][move-1] != ' '){  
+                    std::cout << "█ Column is full. Try another one." << N << "█" << N;
                     continue;
                 }
                 std::cout << "█" << N;
                 std::cout << "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << N;
                 break;
-            }
+                }
 
                 a.move_win(move-1, char_id[i]);
 
