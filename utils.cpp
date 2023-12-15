@@ -107,27 +107,35 @@ bool board::move_win(const int& col_pos, const char& player_id){
     //assigns the disc to the location
     the_board[row_pos][col_pos] = player_id;
 
-    /*
 
-    // accounts for overflows
-    // reference
-
-    int left_border = columnN - (columnN-col_pos);
-    int right_border = columnN - col_pos;
-    int up_border = rowN;
-    int down_border = rowN- row_pos;
-
-    */
+    //combo counter
     int combo_ctr = 0; 
 
+    //HORIZONTAL CHECK
     //makes sure the values dont overflow
     for(int i=std::max(0, col_pos-3); i< std::min(columnN, col_pos+3); ++i) {
             combo_ctr = (the_board[row_pos][i] == player_id) ? combo_ctr +1 : 0;
 
+
+            //debug
             if (combo_ctr >= 4) {
                 std::cout << "CONNECT 4 HORIZONTALLY" << N;
             }
     }  
+    combo_ctr = 0; //resets the counter
+
+    //VERTICAL CHECK
+    //makes sure values dont overflow
+    for(int z=std::max(0, row_pos-4); z< std::min(rowN, row_pos+4); ++z) {
+        combo_ctr = (the_board[z][col_pos] == player_id) ? combo_ctr+1 : 0;
+
+            //debug
+            if(combo_ctr>= 4)
+            std::cout << "CONNECT 4 VERTICALLY" << N;
+    
+
+    }
+
 
 
 
