@@ -15,31 +15,77 @@ std::cout << "█\n█ Connect 4 but you decide how to play it." << N << "█ I 
 std::cout << "█ Planning on training a neural network that"<< N << "█ can fight itself in 100+ columns/rows." << N << "█ "<< N;
 std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash this thing." << N << "█" << N;
     int player_num; //amount of players
+    int columns, rows;  //rows and columns input
     std::vector<char> char_id;   //all player char ids
     std::vector<std::string> name_id; //all name ids (ordered to char ids)
 
+
+
+    std::cout << "█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << N;
     while (true)
     {
-        std::cout << "█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << N;
         std::cout << "█ Number of players: ";
         std::cin>> player_num;
 
 
-
-        if(!std::cin || player_num <2)
-        {
-            std::cout<< "█ Invalid number of players."<<N<<"█ At least 2 players are required." << N << "█" << N;
+        //conditions, fail safe
+        if(!std::cin){
+            std::cout<< "█ Invalid number of players." << N << "█" << N;
             cin_clear(std::cin);
+            continue;
+        } else if (player_num <2){
+            std::cout<< "█ At least 2 players are required." << N << "█" << N;
             continue;
         }
 
-        if(z_check(player_num)) return 0; // DEBUG DELETE LATER
-
-        std::cout << "█" << N;
+        //default
         break;
 
 
     }
+
+
+    std::cout << "█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << N;
+    while (true)
+    {
+        std::cout << "█ Row size: ";
+        std::cin>> rows;
+
+        if(!std::cin){
+            std::cout<< "█ Invalid row size." << N << "█" << N;
+            cin_clear(std::cin);
+            continue;
+        } else if (rows<4){
+            std::cout<< "█ At least 4 rows are required." << N << "█" << N;
+            continue;
+        }
+
+        //default
+        break;
+    }
+
+
+    std::cout << "█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << N;
+    while (true)
+    {
+        std::cout << "█ Column size: ";
+        std::cin>> columns;
+
+        if(!std::cin){
+            std::cout<< "█ Invalid column size." << N << "█" << N;
+            cin_clear(std::cin);
+            continue;
+        } else if (columns<4){
+            std::cout<< "█ At least 4 columns are required." << N << "█" << N;
+            continue;
+        }
+
+        //default
+        break;
+    }
+
+
+    
     for (int i = 0; i < player_num; i++)
     {
         //temp for inputs 
@@ -47,7 +93,7 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
         std::string temp;
 
         //prints the player
-        std::cout << "█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄" << N;
+        std::cout << "█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << N;
         std::cout<< "█ PLAYER " << i+1 << N;
 
         while (true)
@@ -89,10 +135,15 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
         if(z_check(temp)) return 0; // DEBUG DELETE LATER
 
     }
-    std::cout << "█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄" << N;
+
+    std::cout << "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << N;
+
+
+
+
     
 
-    board a;
+    board a(rows, columns, char_id);
     std::cout << a;
 
 
@@ -138,5 +189,6 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
     a.move_win(3, 'A');
     a.move_win(3, 'A');
     std::cout << a;
+    main();
 
 }

@@ -29,7 +29,11 @@ class board{
 
     //constructors
     board();
-    board(const unsigned int& r, const unsigned int& c, std::vector<char> letters);
+
+    //constructor
+    board(const unsigned int& r, 
+        const unsigned int& c, 
+        const std::vector<char>& letters);
     ~board();
 
     //functions

@@ -21,7 +21,9 @@ board::board(): board(6, 12, {'a', 'b', 'c'}) {};
 
 
 //NOTE: EACH BOXY BRACKET DEREFERENCES THE POINTER FOR YOU
-board::board(const unsigned int& r, const unsigned int& c, std::vector<char> letters): 
+board::board(const unsigned int& r, 
+            const unsigned int& c, 
+            const std::vector<char>& letters): 
 
     // member initializer list
     rowN(r), //inits the rows
