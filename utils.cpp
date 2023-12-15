@@ -156,3 +156,18 @@ void cin_clear(std::istream& cin_out) {
     cin_out.ignore(std::numeric_limits<std::streamsize>::max(), N);
 };
 
+
+//TODO: delete later
+bool z_check(const int& input){
+    if(!input) return true;
+    return false;
+
+};
+bool z_check(const char& input){
+    if(toupper(input) == 'Z') return true;
+    return false;
+};
+bool z_check(const std::string& input){
+    if(toupper(input[0]) == 'Z') return true;
+    return false;
+};

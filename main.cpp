@@ -11,12 +11,12 @@ std::cout << "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
 std::cout << "  █ █▄ █ █▀▀ █ █▄ █ █ ▀█▀ █▀▀   █▀▀ █▀█ █▄ █ █▄ █ █▀▀ █▀▀ ▀█▀   █ █"<<N;
 std::cout << "  █ █ ▀█ █▀  █ █ ▀█ █  █  ██▄   █▄▄ █▄█ █ ▀█ █ ▀█ ██▄ █▄▄  █    ▀▀█"<<N;
 std::cout << "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄"<<N;
-std::cout << "█ Connect 4 but you decide how to play it." << N << "█ I decided to make a more advanced, OOP, Connect 4." << N;
+std::cout << "█\n█ Connect 4 but you decide how to play it." << N << "█ I decided to make a more advanced, OOP, Connect 4." << N;
 std::cout << "█ Planning on training a neural network that"<< N << "█ can fight itself in 100+ columns/rows." << N << "█ "<< N;
 std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash this thing." << N << "█" << N;
-    int player_num;
-    std::vector<char> char_id;
-    std::vector<std::string> name_id;
+    int player_num; //amount of players
+    std::vector<char> char_id;   //all player char ids
+    std::vector<std::string> name_id; //all name ids (ordered to char ids)
 
     while (true)
     {
@@ -24,14 +24,21 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
         std::cout << "█ Number of players: ";
         std::cin>> player_num;
 
+
+
         if(!std::cin || player_num <2)
         {
             std::cout<< "█ Invalid number of players."<<N<<"█ At least 2 players are required." << N << "█" << N;
             cin_clear(std::cin);
             continue;
         }
+
+        if(z_check(player_num)) return 0; // DEBUG DELETE LATER
+
         std::cout << "█" << N;
         break;
+
+
     }
     for (int i = 0; i < player_num; i++)
     {
@@ -58,12 +65,14 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
             //default just exits the loop
             break;
         }
+        if(z_check(temp)) return 0; // DEBUG DELETE LATER
+
 
 
         while (true)
         {
             
-            std::cout<< "█"<< T << "(ex: "<< (char)toupper(temp[0]) << ", H, J, etc)"<< N << "█ Character identifier: ";
+            std::cout<< "█\t" << "(ex: "<< (char)toupper(temp[0]) << ", H, J, etc)"<< N << "█ Character identifier: ";
             std::cin>> temp;
 
             if (in_list((char)toupper(temp[0]), char_id))
@@ -76,6 +85,9 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
             break;
         }
         std::cout << "█" << N << "█ NAME: " << name_id[i] << "  ID: " << char_id[i] << N;
+
+        if(z_check(temp)) return 0; // DEBUG DELETE LATER
+
     }
     std::cout << "█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄" << N;
     

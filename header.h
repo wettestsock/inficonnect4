@@ -1,9 +1,9 @@
 #pragma once
 #define N '\n'
-#define T '\t'
 #include <iostream>
 #include <string>
 #include <vector>
+#include <typeinfo>
 #define NORIGHT false
 #define GORIGHT true
 
@@ -44,7 +44,11 @@ std::ostream& operator<<(std::ostream& out, const board& input_brd);
 //clears the inputted instream
 void cin_clear(std::istream& cin_out);
 
-
+//debug
+//TODO: DELETE WHEN DONE
+bool z_check(const int& input);
+bool z_check(const char& input);
+bool z_check(const std::string& input);
 
 //templates have to be implemented in header file
 template<typename X, typename A>
