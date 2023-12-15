@@ -138,57 +138,55 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
 
     std::cout << "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << N;
 
-
-
-
+    //INITS THE BOARD
+    board a(rows, columns, char_id);
     
 
-    board a(rows, columns, char_id);
     std::cout << a;
 
 
-    /*
-    while(true) {
+    
+    //MOVING !!!
+    for(int i=0; i<4; ++i) {
 
         //repeats for each player
         for (int i = 0; i < char_id.size(); i++)
         {   
-            
+            int move;
+            std::cout << "█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << N;
             while (true)
             {
-                std::cout << "█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << N;
-                std::cout<<"█ " << name_id[i] << " (identifier " << char_id[i] << "), make your move";
-                std::cin>> player_num;
+                std::cout<<"█ " << name_id[i] << " (identifier " << char_id[i] << "), move: ";
+                std::cin>> move;
 
-                if(!std::cin || player_num <2)
+                if(!std::cin)
                 {
-                    std::cout<< "█ Invalid number of players."<<N<<"█ At least 2 players are required." << N << "█" << N;
+                    std::cout<< "█ Invalid move. Try again." << N << "█" << N;
                     cin_clear(std::cin);
+                    continue;
+                }else if (move ==0) {
+                    return 0;
+                
+                } else if (move < 1 || move > columns) {
+                    std::cout << "█ Out of range. Try again." << N << "█" << N;
                     continue;
                 }
                 std::cout << "█" << N;
+                std::cout << "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << N;
                 break;
             }
-            
+
+                a.move_win(move-1, char_id[i]);
+
+                std::cout<<a;
 
         }
         
     }
-    */
+    
 
 
-    a.move_win(3, 'Y');
-    a.move_win(4, 'Y');
-    a.move_win(5, 'Y');
-    a.move_win(3, 'A');
-    a.move_win(3, 'B');
-    a.move_win(3, 'A');
-    a.move_win(3, 'A');
-    a.move_win(3, 'A');
-    a.move_win(3, 'A');
-    a.move_win(3, 'A');
-    a.move_win(3, 'A');
+   
     std::cout << a;
-    main();
 
 }
