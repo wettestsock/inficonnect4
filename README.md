@@ -1,6 +1,6 @@
-##   ____________________
-##    INFINITE CONNECT 4
-##   ____________________
+###   ____________________
+###    INFINITE CONNECT 4
+###   ____________________
 
 connect4 but expanded-
 - infinite rows and columns
