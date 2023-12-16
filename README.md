@@ -1,6 +1,5 @@
-# inficonnect4
-
-infinite connect 4
+# THE THE INFINITE CONNECT 4
+# THE SEQUEL WE ALL DESERVED
 
 connect4 but expanded-
 - infinite rows and columns
@@ -11,4 +10,4 @@ connect4 but expanded-
 smaller project for a future one -
 multidimensional connect 4
 
-plan on training a neural network to play against itself
+gonna train a neural network to play against itself
