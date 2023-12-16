@@ -148,14 +148,21 @@ bool board::move_win(const int& col_pos, const char& player_id){
     for(int z=std::max(0, row_pos-3); z< std::min(rowN, row_pos+4); ++z) {
 
         //for every column
-        //TODO: SOLVED THIS 
-        std::cout << z  << '\t' << diag_offset + col_pos- ( (row_pos < 3) ? row_pos : 3 ) << N;
-        
+        //std::cout << z  << '\t' << diag_offset + col_pos- ( (row_pos < 3) ? row_pos : 3 ) << N;
+
+
+        //nasty ass if statement
+        if(the_board[z][diag_offset + col_pos- ( (row_pos < 3) ? row_pos : 3 )] == player_id)
+            combo_ctr++;
+        else 
+            combo_ctr=0;
+            
+
         
         diag_offset++;
 
         if(combo_ctr>= 4) {
-            std::cout << "CONNECT 4 VERTICALLY" << N;
+            std::cout << "CONNECT 4 DIAGONALLY TO THE RIGHT" << N;
             return true;
         }
     }
