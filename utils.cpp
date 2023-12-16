@@ -148,12 +148,10 @@ bool board::move_win(const int& col_pos, const char& player_id){
     for(int z=std::max(0, row_pos-3); z< std::min(rowN, row_pos+4); ++z) {
 
         //for every column
-        //std::cout << z  << '\t' << (z == 0 ) col_pos-3+diag_offset  << N;
+        //TODO: SOLVED THIS 
+        std::cout << z  << '\t' << diag_offset + col_pos- ( (row_pos < 3) ? row_pos : 3 ) << N;
         
-        switch(z){
-
-        };
-
+        
         diag_offset++;
 
         if(combo_ctr>= 4) {
