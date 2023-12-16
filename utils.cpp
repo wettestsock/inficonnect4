@@ -152,7 +152,7 @@ bool board::move_win(const int& col_pos, const char& player_id){
         
         switch(z){
 
-        }
+        };
 
         diag_offset++;
 
