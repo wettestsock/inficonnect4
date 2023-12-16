@@ -182,11 +182,10 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
                 std::cout << "█" << N;
                 std::cout << "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << N;
                 break;
-                }
+            }
 
-                a.move_win(move-1, char_id[i]);
+                if (a.move_win(move-1, char_id[i])) return 0;
 
-                std::cout<<a;
 
         }
         
