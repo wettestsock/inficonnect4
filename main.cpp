@@ -141,11 +141,6 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
     //INITS THE BOARD
     board a(rows, columns, char_id);
     
-
-    std::cout << a;
-
-
-    
     //MOVING !!!
     while(true) {
 
@@ -183,8 +178,13 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
                 std::cout << "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" << N;
                 break;
             }
+                //winning rows (to be replaced by rows, columns of the winning numbers)
+                int win_index[4][2]; 
 
-                if (a.move_win(move-1, char_id[i])) return 0;
+                //if doesnt win, returns ' '
+                //if does, returns the direction in which its won   
+                //if does, populated the win index BACKWARDS (from win till starting indexes)              
+                char dir_win = a.move_win(move-1, char_id[i], win_index);
 
 
         }

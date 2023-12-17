@@ -62,6 +62,8 @@ board::board(const unsigned int& r,
         
     }
 
+    std::cout << *this;
+
 }
 
 board::~board(){
@@ -88,12 +90,12 @@ void board::debug() {
         
         delete the_board[i]; //deletes each column
     }
+    std::cout <<*this;
 }
 
-bool board::move_win(const int& col_pos, const char& player_id){
+char board::move_win(const int& col_pos, const char& player_id, int win_index[4][2]){
     
     // if hits 3 (connect 4) then wins
-
     
     //iterates till the last free block
     int row_pos = -1;
@@ -106,22 +108,30 @@ bool board::move_win(const int& col_pos, const char& player_id){
     }
     //assigns the disc to the location
     the_board[row_pos][col_pos] = player_id;
+
+    //prints the table
     std::cout<<*this;
 
     //combo counter
     int combo_ctr = 0; 
 
+
     //HORIZONTAL CHECK
     //makes sure the values dont overflow
+
     for(int i=std::max(0, col_pos-3); i< std::min(columnN, col_pos+4); ++i) {
         
             combo_ctr = (the_board[row_pos][i] == player_id) ? combo_ctr +1 : 0;
-
+            
 
             //debug
             if (combo_ctr >= 4) {
-                std::cout << "CONNECT 4 HORIZONTALLY" << N;
-                return true;
+                for(int a=0; a<4; ++a){
+                    win_index[a][0] = row_pos;  //win row positions (constant)
+                    win_index[a][1] = i-a; //win column positions (backwards from i)
+                }
+
+                return '-';
             }
     }  
     combo_ctr = 0; //resets the counter
@@ -129,12 +139,15 @@ bool board::move_win(const int& col_pos, const char& player_id){
     //VERTICAL CHECK
     //makes sure values dont overflow
     for(int z=row_pos; z< std::min(rowN, row_pos+4); ++z) {
-        combo_ctr = (the_board[z][col_pos] == player_id) ? combo_ctr+1 : 0;
+            combo_ctr = (the_board[z][col_pos] == player_id) ? combo_ctr+1 : 0;
 
             //debug
             if(combo_ctr>= 4) {
-            std::cout << "CONNECT 4 VERTICALLY" << N;
-            return true;
+            for(int a=0; a<4; ++a){
+                    win_index[a][0] = z-a;  //win row positions (backwards from z)
+                    win_index[a][1] = col_pos; //win column positions (constant)
+                }
+            return '|';
             }
 
     }
@@ -142,7 +155,7 @@ bool board::move_win(const int& col_pos, const char& player_id){
     combo_ctr = 0;
 
     int diag_offset = 0;
-    //DIAGONAL CHECK
+    //DIAGONAL CHECK TO THE RIGHT
 
     //for every row
     for(int z=std::max(0, row_pos-3); z< std::min(rowN, row_pos+4); ++z) {
@@ -161,23 +174,36 @@ bool board::move_win(const int& col_pos, const char& player_id){
 
         if(combo_ctr>= 4) {
             std::cout << "CONNECT 4 DIAGONALLY TO THE RIGHT" << N;
-            return true;
+            return '//';
         }
     }
 
     combo_ctr=0;
     diag_offset=0;
 
-    
-    for(int z= std::min(rowN, row_pos+3); z>std::max(0,row_pos-4); --z){
-        std::cout << z << N;
+
+    //DIAGONAL CHECK TO THE LEFT
+    //checks to the errm LEFT
+    for(int z=std::max(0, row_pos-3); z< std::min(rowN, row_pos+4); ++z) {
+
+        //for every column
+        //std::cout << z  << '\t' << diag_offset + col_pos- ( (row_pos < 3) ? row_pos : 3 ) << N;
+
+
+        //nasty ass if statement
+        if(the_board[z][diag_offset + col_pos+ ( (row_pos < 3) ? row_pos : 3 )] == player_id)
+            combo_ctr++;
+        else 
+            combo_ctr=0;
+            
         diag_offset--;
 
         if(combo_ctr>= 4) {
             std::cout << "CONNECT 4 DIAGONALLY TO THE LEFT" << N;
-            return true;
+            return '\\/';
         }
     }
+    
     
     
 
@@ -186,7 +212,8 @@ bool board::move_win(const int& col_pos, const char& player_id){
 
 
     //default, no winner (duh)
-    return false;
+    //space
+    return ' ';
 }
 
 
