@@ -185,15 +185,18 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
                 //if does, returns the direction in which its won   
                 //if does, populated the win index BACKWARDS (from win till starting indexes)              
                 char dir_win = a.move_win(move-1, char_id[i], win_index);
-
+                if(dir_win != ' ') {
+                    std::cout << a;
+                    for(char c: name_id[i]){
+                        std::cout << c;
+                    }
+                    std::cout << " YOU WON" << ;
+                    return 0;
+                }
+                std::cout<< a;
 
         }
         
     }
-    
-
-
-   
-    std::cout << a;
 
 }

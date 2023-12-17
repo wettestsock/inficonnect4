@@ -109,9 +109,6 @@ char board::move_win(const int& col_pos, const char& player_id, int win_index[4]
     //assigns the disc to the location
     the_board[row_pos][col_pos] = player_id;
 
-    //prints the table
-    std::cout<<*this;
-
     //combo counter
     int combo_ctr = 0; 
 
@@ -130,7 +127,6 @@ char board::move_win(const int& col_pos, const char& player_id, int win_index[4]
                     win_index[a][0] = row_pos;  //win row positions (constant)
                     win_index[a][1] = i-a; //win column positions (backwards from i)
                 }
-
                 return '-';
             }
     }  
@@ -143,11 +139,11 @@ char board::move_win(const int& col_pos, const char& player_id, int win_index[4]
 
             //debug
             if(combo_ctr>= 4) {
-            for(int a=0; a<4; ++a){
-                    win_index[a][0] = z-a;  //win row positions (backwards from z)
-                    win_index[a][1] = col_pos; //win column positions (constant)
-                }
-            return '|';
+                for(int a=0; a<4; ++a){
+                        win_index[a][0] = z-a;  //win row positions (backwards from z)
+                        win_index[a][1] = col_pos; //win column positions (constant)
+                    }
+                return '|';
             }
 
     }
@@ -159,23 +155,25 @@ char board::move_win(const int& col_pos, const char& player_id, int win_index[4]
 
     //for every row
     for(int z=std::max(0, row_pos-3); z< std::min(rowN, row_pos+4); ++z) {
-
+        
         //for every column
         //std::cout << z  << '\t' << diag_offset + col_pos- ( (row_pos < 3) ? row_pos : 3 ) << N;
 
+        //current column (calculated based on the row)
+        int curr_col = diag_offset + col_pos- ( (row_pos < 3) ? row_pos : 3 );
 
         //nasty ass if statement
-        if(the_board[z][diag_offset + col_pos- ( (row_pos < 3) ? row_pos : 3 )] == player_id)
-            combo_ctr++;
-        else 
-            combo_ctr=0;
+        combo_ctr = (the_board[z][curr_col] == player_id) ? combo_ctr+1 : 0;
             
-        diag_offset++;
 
         if(combo_ctr>= 4) {
-            std::cout << "CONNECT 4 DIAGONALLY TO THE RIGHT" << N;
-            return '//';
+            for(int a=0; a<4; ++a){
+                    win_index[a][0] = z-a;  //win row positions (backwards)
+                    win_index[a][1] = curr_col -a; //col row positions
+            }
+            return '\\';
         }
+        diag_offset++;
     }
 
     combo_ctr=0;
@@ -189,30 +187,26 @@ char board::move_win(const int& col_pos, const char& player_id, int win_index[4]
         //for every column
         //std::cout << z  << '\t' << diag_offset + col_pos- ( (row_pos < 3) ? row_pos : 3 ) << N;
 
+        //current column (calculated based on the row)
+        int curr_col = diag_offset + col_pos+ ( (row_pos < 3) ? row_pos : 3 );
 
         //nasty ass if statement
-        if(the_board[z][diag_offset + col_pos+ ( (row_pos < 3) ? row_pos : 3 )] == player_id)
-            combo_ctr++;
-        else 
-            combo_ctr=0;
+        combo_ctr = (the_board[z][curr_col] == player_id) ? combo_ctr+1 : 0;
             
-        diag_offset--;
 
         if(combo_ctr>= 4) {
-            std::cout << "CONNECT 4 DIAGONALLY TO THE LEFT" << N;
-            return '\\/';
+            for(int a=0; a<4; ++a){
+                    win_index[a][0] = z-a;  //win row positions (backwards)
+                    win_index[a][1] = curr_col -a; //col row positions
+            }      
+            return '/';
         }
+        diag_offset--;
     }
-    
-    
-    
-
-
-
-
-
     //default, no winner (duh)
     //space
+    //prints the table
+
     return ' ';
 }
 

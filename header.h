@@ -14,6 +14,7 @@ void hello();
 class board{
 
 
+    
     public:
     //global variables
 
