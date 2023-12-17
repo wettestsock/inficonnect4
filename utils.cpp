@@ -93,7 +93,7 @@ void board::debug() {
     std::cout <<*this;
 }
 
-char board::move_win(const int& col_pos, const char& player_id, int win_index[4][2]){
+bool board::move_win(const int& col_pos, const char& player_id){
     
     // if hits 3 (connect 4) then wins
     
@@ -123,11 +123,15 @@ char board::move_win(const int& col_pos, const char& player_id, int win_index[4]
 
             //debug
             if (combo_ctr >= 4) {
-                for(int a=0; a<4; ++a){
-                    win_index[a][0] = row_pos;  //win row positions (constant)
-                    win_index[a][1] = i-a; //win column positions (backwards from i)
+                
+                //iterates backwards on the combo counter
+                //replaces the board positions with -
+                while(combo_ctr-1) {
+                    the_board[row_pos][i-combo_ctr] = '-';
+                    combo_ctr--;
                 }
-                return '-';
+
+                return true;
             }
     }  
     combo_ctr = 0; //resets the counter
@@ -139,11 +143,13 @@ char board::move_win(const int& col_pos, const char& player_id, int win_index[4]
 
             //debug
             if(combo_ctr>= 4) {
-                for(int a=0; a<4; ++a){
-                        win_index[a][0] = z-a;  //win row positions (backwards from z)
-                        win_index[a][1] = col_pos; //win column positions (constant)
-                    }
-                return '|';
+                
+                //iterates combo counter back
+                while(combo_ctr-1){
+                    the_board[z-combo_ctr][col_pos] = '|';
+                    combo_ctr--;
+                }
+                return true;
             }
 
     }
@@ -167,11 +173,12 @@ char board::move_win(const int& col_pos, const char& player_id, int win_index[4]
             
 
         if(combo_ctr>= 4) {
-            for(int a=0; a<4; ++a){
-                    win_index[a][0] = z-a;  //win row positions (backwards)
-                    win_index[a][1] = curr_col -a; //col row positions
+
+            while(combo_ctr-1){
+                the_board[z-combo_ctr][curr_col-combo_ctr] = '\\';
+                combo_ctr--;
             }
-            return '\\';
+            return true;
         }
         diag_offset++;
     }
@@ -199,15 +206,19 @@ char board::move_win(const int& col_pos, const char& player_id, int win_index[4]
                     win_index[a][0] = z-a;  //win row positions (backwards)
                     win_index[a][1] = curr_col -a; //col row positions
             }      
-            return '/';
+
+            while(combo_ctr-1){
+                the_board[z-combo_ctr][curr_col-combo_ctr] = '/';
+                combo_ctr--;
+            }
+            return true;
         }
         diag_offset--;
     }
     //default, no winner (duh)
     //space
-    //prints the table
 
-    return ' ';
+    return false;
 }
 
 

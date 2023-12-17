@@ -38,7 +38,7 @@ class board{
     ~board();
 
     //functions
-    char move_win(const int& col_pos, const char& player_id, int win_index[4][2]);
+    bool move_win(const int& col_pos, const char& player_id);
     void debug();  
 };
 
