@@ -157,8 +157,6 @@ bool board::move_win(const int& col_pos, const char& player_id){
         else 
             combo_ctr=0;
             
-
-        
         diag_offset++;
 
         if(combo_ctr>= 4) {
@@ -166,6 +164,21 @@ bool board::move_win(const int& col_pos, const char& player_id){
             return true;
         }
     }
+
+    combo_ctr=0;
+    diag_offset=0;
+
+    
+    for(int z= std::min(rowN, row_pos+3); z>std::max(0,row_pos-4); --z){
+        std::cout << z << N;
+        diag_offset--;
+
+        if(combo_ctr>= 4) {
+            std::cout << "CONNECT 4 DIAGONALLY TO THE LEFT" << N;
+            return true;
+        }
+    }
+    
     
 
 
