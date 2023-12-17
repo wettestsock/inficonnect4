@@ -203,7 +203,7 @@ bool board::move_win(const int& col_pos, const char& player_id){
   
             //goes backwards
             for(int a=0; a<4; ++a){
-                the_board[z-a][curr_col-a] = '/';
+                the_board[z-a][curr_col+a] = '/';
                 combo_ctr--;
             }
             return true;
@@ -300,7 +300,6 @@ std::string big_text(const std::string& input){
                 break;
 
             //special characters
-            case '\n': top += '\n'; bottom += '\n'; break;
             case '.':  top += ' '; bottom += "▄"; break;
             case '\'': top += "▀"; bottom += ' '; break;
             case '-': top += "▄▄"; bottom += "  "; break;
@@ -316,7 +315,7 @@ std::string big_text(const std::string& input){
 
     
     //adds the lines
-    for(int i=0; i<top.length(); ++i){
+    for(int i=0; i<top.size()/2; ++i){
         top_line += "▀";
         bottom_line += "▄";
     }

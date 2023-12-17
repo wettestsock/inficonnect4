@@ -12,7 +12,8 @@ int main(){
 //std::cout << "  █ █ ▀█ █▀  █ █ ▀█ █  █  ██▄   █▄▄ █▄█ █ ▀█ █ ▀█ ██▄ █▄▄  █    ▀▀█"<<N;
 //std::cout << "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄"<<N;
 
-std::cout << big_text(" infinite connect 4 ");
+std::cout << N << N << big_text(" infinite connect 4 ") ;
+
 std::cout << "█\n█ Connect 4 but you decide how to play it." << N << "█ I decided to make a more advanced, OOP, Connect 4." << N;
 std::cout << "█ Planning on training a neural network that"<< N << "█ can fight itself in 100+ columns/rows." << N << "█ "<< N;
 std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash this thing." << N << "█" << N;
@@ -35,6 +36,10 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
             std::cout<< "█ Invalid number of players." << N << "█" << N;
             cin_clear(std::cin);
             continue;
+        } else if(player_num==0){
+            std::cout << big_text("that's it folks!") << N << N;
+            return 0;
+        
         } else if (player_num <2){
             std::cout<< "█ At least 2 players are required." << N << "█" << N;
             continue;
@@ -182,21 +187,27 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
                 break;
             }
 
-                //if doesnt win, returns ' '
-                //if does, returns the direction in which its won   
-                //if does, populated the win index BACKWARDS (from win till starting indexes)              
-                bool win = a.move_win(move-1, char_id[i]);
+            //if doesnt win, returns ' '
+            //if does, returns the direction in which its won   
+            //if does, populated the win index BACKWARDS (from win till starting indexes)              
+            bool win = a.move_win(move-1, char_id[i]);
+            //prints the board
+            std::cout<< a;
+            
+            //if no win then continue
+            if(!win) continue;
+            
+            //if name's too big
+            std::cout << ((name_id[i].length() < 10) ? big_text(name_id[i]) : big_text(name_id[i].substr(0,10)+"..."));
+            std::cout<< big_text("... you won!!!") << big_text("play again?")<< N << "[y or n]: ";
+            std::string temp;
+            std::cin >> temp;
 
-                //prints the board
-                std::cout<< a;
-                
-                if(win) {
-
-                    std::cout <<big_text(name_id[i]);
-                    
-                    
-                    return 0;
-                }
+            //try again
+            if(tolower(temp[0])=='y') main();        
+            
+            return 0;
+            
 
         }
         
