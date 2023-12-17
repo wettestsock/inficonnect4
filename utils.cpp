@@ -126,9 +126,8 @@ bool board::move_win(const int& col_pos, const char& player_id){
                 
                 //iterates backwards on the combo counter
                 //replaces the board positions with -
-                while(combo_ctr-1) {
-                    the_board[row_pos][i-combo_ctr] = '-';
-                    combo_ctr--;
+                for(int a=0; a<4; ++a) {
+                    the_board[row_pos][i-a] = '-';
                 }
 
                 return true;
@@ -145,9 +144,8 @@ bool board::move_win(const int& col_pos, const char& player_id){
             if(combo_ctr>= 4) {
                 
                 //iterates combo counter back
-                while(combo_ctr-1){
-                    the_board[z-combo_ctr][col_pos] = '|';
-                    combo_ctr--;
+                for(int a=0; a<4; ++a){
+                    the_board[z-a][col_pos] = '|';
                 }
                 return true;
             }
@@ -174,8 +172,8 @@ bool board::move_win(const int& col_pos, const char& player_id){
 
         if(combo_ctr>= 4) {
 
-            while(combo_ctr-1){
-                the_board[z-combo_ctr][curr_col-combo_ctr] = '\\';
+            for(int a=0; a<4; ++a){
+                the_board[z-a][curr_col-a] = '\\';
                 combo_ctr--;
             }
             return true;
@@ -202,13 +200,10 @@ bool board::move_win(const int& col_pos, const char& player_id){
             
 
         if(combo_ctr>= 4) {
+  
+            //goes backwards
             for(int a=0; a<4; ++a){
-                    win_index[a][0] = z-a;  //win row positions (backwards)
-                    win_index[a][1] = curr_col -a; //col row positions
-            }      
-
-            while(combo_ctr-1){
-                the_board[z-combo_ctr][curr_col-combo_ctr] = '/';
+                the_board[z-a][curr_col-a] = '/';
                 combo_ctr--;
             }
             return true;
@@ -260,6 +255,77 @@ std::ostream& operator<<(std::ostream& out, const board& input_brd){
 
 };
 
+//converts to BIG text
+//string as value because it might be modified
+std::string big_text(const std::string& input){
+
+    //TOP BIG LETTERS (match the bottom)
+    const std::vector<std::string> top_big = {
+        "▄▀█", "█▄▄", "█▀▀", "█▀▄", "█▀▀", "█▀▀", "█▀▀", "█ █", "█", "  █", "█▄▀", "█  ", 
+        "█▀▄▀█", "█▄ █", "█▀█", "█▀█", "█▀█", "█▀█", "█▀", "▀█▀", "█ █", "█ █", "█ █ █", 
+        "▀▄▀", "█▄█", "▀█", 
+        
+        "█▀█", "▄█", "▀█", "▀▀█", "█ █", "█▀", "█▄▄", "▀▀█", "▄▀▀▄", "█▀█"
+    };
+
+    //BOTTOM BIG LETTERS (match the top)
+    //a - z and 0 -9 
+    const std::vector<std::string> bottom_big = {
+        "█▀█", "█▄█", "█▄▄", "█▄▀", "██▄", "█▀ ", "█▄█", "█▀█", "█", "█▄█", "█ █", "█▄▄", 
+        "█ ▀ █", "█ ▀█", "█▄█", "█▀▀", "▀▀█", "█▀▄", "▄█", " █ ", "█▄█", "▀▄▀", "▀▄▀▄▀", 
+        "█ █", " █ ", "█▄", 
+        
+        "█▄█", " █", "█▄", "▄▄█", "▀▀█", "▄█", "█▄█", "  █", "▀██▀", "▀▀█"
+    };
+
+    //outputs
+    std::string top_line;
+    std::string top; 
+    std::string bottom;
+    std::string bottom_line;
+
+
+    for(const char c: input){
+        switch(tolower(c)){
+            case 'a' ... 'z': 
+                //appends the big version strings of each
+                top += top_big[(int)tolower(c)-97];
+                bottom += bottom_big[(int)tolower(c)-97];
+                break;
+            
+            case '0' ... '9':
+                //decimal - 48 + 26
+                top+= top_big[(int)c-22];
+                bottom+= bottom_big[(int)c-22];
+                break;
+
+            //special characters
+            case '\n': top += '\n'; bottom += '\n'; break;
+            case '.':  top += ' '; bottom += "▄"; break;
+            case '\'': top += "▀"; bottom += ' '; break;
+            case '-': top += "▄▄"; bottom += "  "; break;
+            case ' ':  top += ' '; bottom += ' '; break;
+            case '!': top += "█"; bottom += "▄"; break;
+            case '?': top += "▀█"; bottom += " ▄"; break;
+            default: continue; //skips any and all other characters
+        }
+        //adds separator
+        top += ' ';
+        bottom += ' ';
+    }
+
+    
+    //adds the lines
+    for(int i=0; i<top.length(); ++i){
+        top_line += "▀";
+        bottom_line += "▄";
+    }
+
+    //returns the fat string
+    return top_line + N + top + N + bottom + N + bottom_line + N;
+
+};
+
 //clears the cin
 void cin_clear(std::istream& cin_out) {
     cin_out.clear();
@@ -267,7 +333,10 @@ void cin_clear(std::istream& cin_out) {
 };
 
 
-//TODO: delete later
+//DEBUG
+
+//DEBUGGING 
+
 bool z_check(const int& input){
     if(!input) return true;
     return false;

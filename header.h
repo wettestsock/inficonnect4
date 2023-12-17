@@ -68,3 +68,5 @@ bool in_list(const X& element, const A& list) {
     return false;
 
 };
+
+std::string big_text(const std::string& input);

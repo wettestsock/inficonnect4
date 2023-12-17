@@ -7,10 +7,12 @@
 
 
 int main(){
-std::cout << "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀"<<N;
-std::cout << "  █ █▄ █ █▀▀ █ █▄ █ █ ▀█▀ █▀▀   █▀▀ █▀█ █▄ █ █▄ █ █▀▀ █▀▀ ▀█▀   █ █"<<N;
-std::cout << "  █ █ ▀█ █▀  █ █ ▀█ █  █  ██▄   █▄▄ █▄█ █ ▀█ █ ▀█ ██▄ █▄▄  █    ▀▀█"<<N;
-std::cout << "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄"<<N;
+//std::cout << "▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀"<<N;
+//std::cout << "  █ █▄ █ █▀▀ █ █▄ █ █ ▀█▀ █▀▀   █▀▀ █▀█ █▄ █ █▄ █ █▀▀ █▀▀ ▀█▀   █ █"<<N;
+//std::cout << "  █ █ ▀█ █▀  █ █ ▀█ █  █  ██▄   █▄▄ █▄█ █ ▀█ █ ▀█ ██▄ █▄▄  █    ▀▀█"<<N;
+//std::cout << "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄"<<N;
+
+std::cout << big_text(" infinite connect 4 ");
 std::cout << "█\n█ Connect 4 but you decide how to play it." << N << "█ I decided to make a more advanced, OOP, Connect 4." << N;
 std::cout << "█ Planning on training a neural network that"<< N << "█ can fight itself in 100+ columns/rows." << N << "█ "<< N;
 std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash this thing." << N << "█" << N;
@@ -111,7 +113,7 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
             //default just exits the loop
             break;
         }
-        if(z_check(temp)) return 0; // DEBUG DELETE LATER
+        //if(z_check(temp)) return 0; // DEBUG DELETE LATER
 
 
 
@@ -132,7 +134,7 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
         }
         std::cout << "█" << N << "█ NAME: " << name_id[i] << "  ID: " << char_id[i] << N;
 
-        if(z_check(temp)) return 0; // DEBUG DELETE LATER
+        //if(z_check(temp)) return 0; // DEBUG DELETE LATER
 
     }
 
@@ -162,8 +164,9 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
                     continue;
                 
                 // DEBUG, REMOVE LATER
-                }else if (move ==0) {
-                    return 0;
+                //}else if (move ==0) {
+                //    return 0;
+
                 //if input out of range
                 } else if (move < 1 || move > columns) {  
                     std::cout << "█ Out of range. Try again." << N << "█" << N;
@@ -182,14 +185,16 @@ std::cout << "█ Highly scalable and foolproof."<< N << "█ You won't crash th
                 //if doesnt win, returns ' '
                 //if does, returns the direction in which its won   
                 //if does, populated the win index BACKWARDS (from win till starting indexes)              
-                char dir_win = a.move_win(move-1, char_id[i]);
+                bool win = a.move_win(move-1, char_id[i]);
 
                 //prints the board
                 std::cout<< a;
                 
-                if(dir_win != ' ') {
-            
-                    std::cout << name_id[i] << " YOU WON" << N;
+                if(win) {
+
+                    std::cout <<big_text(name_id[i]);
+                    
+                    
                     return 0;
                 }
 
