@@ -7,16 +7,22 @@
 
 
 int main(){
-//std::cout << "-------------------------------------------------------------------"<<N;
-//std::cout << "  | |▄ | |-- | |▄ | | -|- |--   |-- |-| |▄ | |▄ | |-- |-- -|-   | |"<<N;
-//std::cout << "  | | -| |-  | | -| |  |  ||▄   |▄▄ |▄| | -| | -| ||▄ |▄▄  |    --|"<<N;
-//std::cout << "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄"<<N;
+//std::cout << "\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580"<<N;
+//std::cout << "  \u2588 \u2588\u2584 \u2588 \u2588\u2580\u2580 \u2588 \u2588\u2584 \u2588 \u2588 \u2580\u2588\u2580 \u2588\u2580\u2580   \u2588\u2580\u2580 \u2588\u2580\u2588 \u2588\u2584 \u2588 \u2588\u2584 \u2588 \u2588\u2580\u2580 \u2588\u2580\u2580 \u2580\u2588\u2580   \u2588 \u2588"<<N;
+//std::cout << "  \u2588 \u2588 \u2580\u2588 \u2588\u2580  \u2588 \u2588 \u2580\u2588 \u2588  \u2588  \u2588\u2588\u2584   \u2588\u2584\u2584 \u2588\u2584\u2588 \u2588 \u2580\u2588 \u2588 \u2580\u2588 \u2588\u2588\u2584 \u2588\u2584\u2584  \u2588    \u2580\u2580\u2588"<<N;
+//std::cout << "\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584"<<N;
+
+/*
+█ - \u2588
+▀ - \u2580
+▄ - \u2584
+*/
 
 std::cout << N << N << big_text(" infinite connect 4 ") ;
 
-std::cout << "|\n| Connect 4 but you decide how to play it." << N << "| I decided to make a more advanced, OOP, Connect 4." << N;
-std::cout << "| Planning on training a neural network that"<< N << "| can fight itself in 100+ columns/rows." << N << "| "<< N;
-std::cout << "| Highly scalable and foolproof."<< N << "| You won't crash this thing." << N << '|' << N;
+std::cout << "\u2588\n\u2588 Connect 4 but you decide how to play it." << N << "\u2588 I decided to make a more advanced, OOP, Connect 4." << N;
+std::cout << "\u2588 Planning on training a neural network that"<< N << "\u2588 can fight itself in 100+ columns/rows." << N << "\u2588 "<< N;
+std::cout << "\u2588 Highly scalable and foolproof."<< N << "\u2588 You won't crash this thing." << N << "\u2588" << N;
     int player_num; //amount of players
     int columns, rows;  //rows and columns input
     std::vector<char> char_id;   //all player char ids
@@ -24,16 +30,16 @@ std::cout << "| Highly scalable and foolproof."<< N << "| You won't crash this t
 
 
 
-    std::cout << "|----------------------" << N;
+    std::cout << "\u2588\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580" << N;
     while (true)
     {
-        std::cout << "| Number of players: ";
+        std::cout << "\u2588 Number of players: ";
         std::cin>> player_num;
 
 
         //conditions, fail safe
         if(!std::cin){
-            std::cout<< "| Invalid number of players." << N << '|' << N;
+            std::cout<< "\u2588 Invalid number of players." << N << "\u2588" << N;
             cin_clear(std::cin);
             continue;
         } else if(player_num==0){
@@ -41,7 +47,7 @@ std::cout << "| Highly scalable and foolproof."<< N << "| You won't crash this t
             return 0;
         
         } else if (player_num <2){
-            std::cout<< "| At least 2 players are required." << N << '|' << N;
+            std::cout<< "\u2588 At least 2 players are required." << N << "\u2588" << N;
             continue;
         }
 
@@ -52,18 +58,18 @@ std::cout << "| Highly scalable and foolproof."<< N << "| You won't crash this t
     }
 
 
-    std::cout << "|----------------------" << N;
+    std::cout << "\u2588\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580" << N;
     while (true)
     {
-        std::cout << "| Row size: ";
+        std::cout << "\u2588 Row size: ";
         std::cin>> rows;
 
         if(!std::cin){
-            std::cout<< "| Invalid row size." << N << '|' << N;
+            std::cout<< "\u2588 Invalid row size." << N << "\u2588" << N;
             cin_clear(std::cin);
             continue;
         } else if (rows<4){
-            std::cout<< "| At least 4 rows are required." << N << '|' << N;
+            std::cout<< "\u2588 At least 4 rows are required." << N << "\u2588" << N;
             continue;
         }
 
@@ -72,18 +78,18 @@ std::cout << "| Highly scalable and foolproof."<< N << "| You won't crash this t
     }
 
 
-    std::cout << "|----------------------" << N;
+    std::cout << "\u2588\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580" << N;
     while (true)
     {
-        std::cout << "| Column size: ";
+        std::cout << "\u2588 Column size: ";
         std::cin>> columns;
 
         if(!std::cin){
-            std::cout<< "| Invalid column size." << N << '|' << N;
+            std::cout<< "\u2588 Invalid column size." << N << "\u2588" << N;
             cin_clear(std::cin);
             continue;
         } else if (columns<4){
-            std::cout<< "| At least 4 columns are required." << N << '|' << N;
+            std::cout<< "\u2588 At least 4 columns are required." << N << "\u2588" << N;
             continue;
         }
 
@@ -100,17 +106,17 @@ std::cout << "| Highly scalable and foolproof."<< N << "| You won't crash this t
         std::string temp;
 
         //prints the player
-        std::cout << "|----------------------" << N;
-        std::cout<< "| PLAYER " << i+1 << N;
+        std::cout << "\u2588\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580" << N;
+        std::cout<< "\u2588 PLAYER " << i+1 << N;
 
         while (true)
         {
-            std::cout<< "| Name: ";
+            std::cout<< "\u2588 Name: ";
             std::cin>> temp;
 
             //if name's already taken
             if(in_list(temp, name_id)){
-                std::cout<<"| Duplicate name. Try again." << N;
+                std::cout<<"\u2588 Duplicate name. Try again." << N;
                 continue;
             }
             //pushes the name and its associated character
@@ -125,25 +131,25 @@ std::cout << "| Highly scalable and foolproof."<< N << "| You won't crash this t
         while (true)
         {
             
-            std::cout<< "|\t" << "(ex: "<< (char)toupper(temp[0]) << ", H, J, etc)"<< N << "| Character identifier: ";
+            std::cout<< "\u2588\t" << "(ex: "<< (char)toupper(temp[0]) << ", H, J, etc)"<< N << "\u2588 Character identifier: ";
             std::cin>> temp;
 
             if (in_list((char)toupper(temp[0]), char_id))
             {
-                std::cout<<"| Duplicate character. Try again." << N;
+                std::cout<<"\u2588 Duplicate character. Try again." << N;
                 continue;
             }
             //default
             char_id.push_back(toupper(temp[0]));
             break;
         }
-        std::cout << '|' << N << "| NAME: " << name_id[i] << "  ID: " << char_id[i] << N;
+        std::cout << "\u2588" << N << "\u2588 NAME: " << name_id[i] << "  ID: " << char_id[i] << N;
 
         //if(z_check(temp)) return 0; // DEBUG DELETE LATER
 
     }
 
-    std::cout << "-----------------------" << N;
+    std::cout << "\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580" << N;
 
     //INITS THE BOARD
     board a(rows, columns, char_id);
@@ -155,16 +161,16 @@ std::cout << "| Highly scalable and foolproof."<< N << "| You won't crash this t
         for (int i = 0; i < char_id.size(); i++)
         {   
             int move;
-            std::cout << "|----------------------" << N;
+            std::cout << "\u2588\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580" << N;
             while (true)
             {
-                std::cout<<"| " << name_id[i] << " (identifier " << char_id[i] << "), move: ";
+                std::cout<<"\u2588 " << name_id[i] << " (identifier " << char_id[i] << "), move: ";
                 std::cin>> move;
 
                 //if invalid
                 if(!std::cin)  
                 {
-                    std::cout<< "| Invalid move. Try again." << N << '|' << N;
+                    std::cout<< "\u2588 Invalid move. Try again." << N << "\u2588" << N;
                     cin_clear(std::cin);
                     continue;
                 
@@ -174,16 +180,16 @@ std::cout << "| Highly scalable and foolproof."<< N << "| You won't crash this t
 
                 //if input out of range
                 } else if (move < 1 || move > columns) {  
-                    std::cout << "| Out of range. Try again." << N << '|' << N;
+                    std::cout << "\u2588 Out of range. Try again." << N << "\u2588" << N;
                     continue;
                     
                 // if a column is full (top one is taken)
                 } else if (a.the_board[0][move-1] != ' '){  
-                    std::cout << "| Column is full. Try another one." << N << '|' << N;
+                    std::cout << "\u2588 Column is full. Try another one." << N << "\u2588" << N;
                     continue;
                 }
-                std::cout << '|' << N;
-                std::cout << "-----------------------" << N;
+                std::cout << "\u2588" << N;
+                std::cout << "\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580\u2580" << N;
                 break;
             }
 

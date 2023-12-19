@@ -10,6 +10,13 @@
 OUTPUT :
 cd coding/inficonnect4
 clang++ main.cpp utils.cpp -o out/out
+
+UNICODES:
+
+█ - \u2588
+▀ - \u2580
+▄ - \u2584
+
 2*/
 
 void hello(){
@@ -261,21 +268,21 @@ std::string big_text(const std::string& input){
 
     //TOP BIG LETTERS (match the bottom)
     const std::vector<std::string> top_big = {
-        "▄▀█", "█▄▄", "█▀▀", "█▀▄", "█▀▀", "█▀▀", "█▀▀", "█ █", "█", "  █", "█▄▀", "█  ", 
-        "█▀▄▀█", "█▄ █", "█▀█", "█▀█", "█▀█", "█▀█", "█▀", "▀█▀", "█ █", "█ █", "█ █ █", 
-        "▀▄▀", "█▄█", "▀█", 
+        "\u2584\u2580\u2588", "\u2588\u2584\u2584", "\u2588\u2580\u2580", "\u2588\u2580\u2584", "\u2588\u2580\u2580", "\u2588\u2580\u2580", "\u2588\u2580\u2580", "\u2588 \u2588", "\u2588", "  \u2588", "\u2588\u2584\u2580", "\u2588  ", 
+        "\u2588\u2580\u2584\u2580\u2588", "\u2588\u2584 \u2588", "\u2588\u2580\u2588", "\u2588\u2580\u2588", "\u2588\u2580\u2588", "\u2588\u2580\u2588", "\u2588\u2580", "\u2580\u2588\u2580", "\u2588 \u2588", "\u2588 \u2588", "\u2588 \u2588 \u2588", 
+        "\u2580\u2584\u2580", "\u2588\u2584\u2588", "\u2580\u2588", 
         
-        "█▀█", "▄█", "▀█", "▀▀█", "█ █", "█▀", "█▄▄", "▀▀█", "▄▀▀▄", "█▀█"
+        "\u2588\u2580\u2588", "\u2584\u2588", "\u2580\u2588", "\u2580\u2580\u2588", "\u2588 \u2588", "\u2588\u2580", "\u2588\u2584\u2584", "\u2580\u2580\u2588", "\u2584\u2580\u2580\u2584", "\u2588\u2580\u2588"
     };
 
     //BOTTOM BIG LETTERS (match the top)
     //a - z and 0 -9 
     const std::vector<std::string> bottom_big = {
-        "█▀█", "█▄█", "█▄▄", "█▄▀", "██▄", "█▀ ", "█▄█", "█▀█", "█", "█▄█", "█ █", "█▄▄", 
-        "█ ▀ █", "█ ▀█", "█▄█", "█▀▀", "▀▀█", "█▀▄", "▄█", " █ ", "█▄█", "▀▄▀", "▀▄▀▄▀", 
-        "█ █", " █ ", "█▄", 
+        "\u2588\u2580\u2588", "\u2588\u2584\u2588", "\u2588\u2584\u2584", "\u2588\u2584\u2580", "\u2588\u2588\u2584", "\u2588\u2580 ", "\u2588\u2584\u2588", "\u2588\u2580\u2588", "\u2588", "\u2588\u2584\u2588", "\u2588 \u2588", "\u2588\u2584\u2584", 
+        "\u2588 \u2580 \u2588", "\u2588 \u2580\u2588", "\u2588\u2584\u2588", "\u2588\u2580\u2580", "\u2580\u2580\u2588", "\u2588\u2580\u2584", "\u2584\u2588", " \u2588 ", "\u2588\u2584\u2588", "\u2580\u2584\u2580", "\u2580\u2584\u2580\u2584\u2580", 
+        "\u2588 \u2588", " \u2588 ", "\u2588\u2584", 
         
-        "█▄█", " █", "█▄", "▄▄█", "▀▀█", "▄█", "█▄█", "  █", "▀██▀", "▀▀█"
+        "\u2588\u2584\u2588", " \u2588", "\u2588\u2584", "\u2584\u2584\u2588", "\u2580\u2580\u2588", "\u2584\u2588", "\u2588\u2584\u2588", "  \u2588", "\u2580\u2588\u2588\u2580", "\u2580\u2580\u2588"
     };
 
     //outputs
@@ -300,12 +307,12 @@ std::string big_text(const std::string& input){
                 break;
 
             //special characters
-            case '.':  top += ' '; bottom += "▄"; break;
-            case '\'': top += "▀"; bottom += ' '; break;
-            case '-': top += "▄▄"; bottom += "  "; break;
+            case '.':  top += ' '; bottom += "\u2584"; break;
+            case '\'': top += "\u2580"; bottom += ' '; break;
+            case '-': top += "\u2584\u2584"; bottom += "  "; break;
             case ' ':  top += ' '; bottom += ' '; break;
-            case '!': top += "█"; bottom += "▄"; break;
-            case '?': top += "▀█"; bottom += " ▄"; break;
+            case '!': top += "\u2588"; bottom += "\u2584"; break;
+            case '?': top += "\u2580\u2588"; bottom += " \u2584"; break;
             default: continue; //skips any and all other characters
         }
         //adds separator
@@ -316,14 +323,16 @@ std::string big_text(const std::string& input){
     
     //adds the lines
     for(int i=0; i<top.size()/2; ++i){
-        top_line += "▀";
-        bottom_line += "▄";
+        top_line += "\u2580";
+        bottom_line += "\u2584";
     }
 
     //returns the fat string
     return top_line + N + top + N + bottom + N + bottom_line + N;
 
 };
+
+
 
 //clears the cin
 void cin_clear(std::istream& cin_out) {

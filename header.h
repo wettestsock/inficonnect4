@@ -4,8 +4,6 @@
 #include <string>
 #include <vector>
 #include <typeinfo>
-#define NORIGHT false
-#define GORIGHT true
 
 void hello();
 
