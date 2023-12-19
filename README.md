@@ -34,6 +34,14 @@ further information to fix this can be found [here](https://stackoverflow.com/qu
 
 
 
+
+
+
+
+
+
+# notes # 
+
 smaller project for a future one -
 multidimensional connect 4
 
