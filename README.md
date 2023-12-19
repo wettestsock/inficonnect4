@@ -28,8 +28,8 @@ g++/clang++ main.cpp utils.cpp -o out/out
 terminal with a UTF-8 encoding (to support the cool box effects)
 
 # FOR WINDOWS USERS ON TERMINAL #
-the command prompt might not show unicode characters properly
-the lazy fix is to type `chcp 65001` on every terminal boot
+the command prompt might not show unicode characters properly<br>
+the lazy fix is to type `chcp 65001` on every terminal boot<br>
 further information to fix this can be found [here](https://stackoverflow.com/questions/388490/how-can-i-use-unicode-characters-on-the-windows-command-line)
 
 
