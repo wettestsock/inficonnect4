@@ -196,23 +196,29 @@ std::cout << "\u2588 Highly scalable and foolproof."<< N << "\u2588 You won't cr
             //if doesnt win, returns ' '
             //if does, returns the direction in which its won   
             //if does, populated the win index BACKWARDS (from win till starting indexes)              
-            bool win = a.move_win(move-1, char_id[i]);
+            short int win = a.move_win(move-1, char_id[i]);
             //prints the board
             std::cout<< a;
             
-            //if no win then continue
-            if(!win) continue;
-            
-            //if name's too big
-            std::cout << ((name_id[i].length() < 10) ? big_text(name_id[i]) : big_text(name_id[i].substr(0,10)+"..."));
-            std::cout<< big_text("... you won!!!") << big_text("play again?")<< N << "[y or n]: ";
+            switch(win){
+                case WIN:  //win statement , executes play again
+                    std::cout << ((name_id[i].length() < 10) ? big_text(name_id[i]) : big_text(name_id[i].substr(0,10)+"..."));
+                    std::cout<< big_text("... you won!!!");
+                    break;
+                case OUTOFDISKS:
+                    std::cout<< big_text("out of disks") << N << ":(" << N;
+                    break;
+                default:  //WHAT USUALLY HAPPENS
+                    continue; //iterates next, doesnt execute code below
+            }
+        
+            std::cout<< big_text("play again?")<< N << "[y or n]: ";
             std::string temp;
             std::cin >> temp;
-
-            //try again
+            //try again, recurses the main
             if(tolower(temp[0])=='y') main();        
-            
             return 0;
+
             
 
         }

@@ -4,6 +4,9 @@
 #include <string>
 #include <vector>
 #include <typeinfo>
+#define NOWIN 0
+#define WIN 1
+#define OUTOFDISKS 2
 
 void hello();
 
@@ -36,7 +39,7 @@ class board{
     ~board();
 
     //functions
-    bool move_win(const int& col_pos, const char& player_id);
+    short int move_win(const int& col_pos, const char& player_id);
     void debug();  
 };
 

@@ -100,7 +100,7 @@ void board::debug() {
     std::cout <<*this;
 }
 
-bool board::move_win(const int& col_pos, const char& player_id){
+short int board::move_win(const int& col_pos, const char& player_id){
     
     // if hits 3 (connect 4) then wins
     
@@ -118,6 +118,18 @@ bool board::move_win(const int& col_pos, const char& player_id){
 
     //combo counter
     int combo_ctr = 0; 
+
+    //empty counter
+    int empty_ctr = 0;
+    //FULL BOARD CHECK
+    //checks the top board, if full returns 2
+    for(int i=0; i<columnN; i++){
+
+        if(the_board[0][i] == ' ') empty_ctr++;
+    }
+
+    //if top row is full, return full
+    if (empty_ctr < 1) return OUTOFDISKS;
 
 
     //HORIZONTAL CHECK
@@ -137,7 +149,7 @@ bool board::move_win(const int& col_pos, const char& player_id){
                     the_board[row_pos][i-a] = '-';
                 }
 
-                return true;
+                return WIN;
             }
     }  
     combo_ctr = 0; //resets the counter
@@ -154,7 +166,7 @@ bool board::move_win(const int& col_pos, const char& player_id){
                 for(int a=0; a<4; ++a){
                     the_board[z-a][col_pos] = '|';
                 }
-                return true;
+                return WIN;
             }
 
     }
@@ -183,7 +195,7 @@ bool board::move_win(const int& col_pos, const char& player_id){
                 the_board[z-a][curr_col-a] = '\\';
                 combo_ctr--;
             }
-            return true;
+            return WIN;
         }
         diag_offset++;
     }
@@ -213,14 +225,14 @@ bool board::move_win(const int& col_pos, const char& player_id){
                 the_board[z-a][curr_col+a] = '/';
                 combo_ctr--;
             }
-            return true;
+            return WIN;
         }
         diag_offset--;
     }
     //default, no winner (duh)
     //space
 
-    return false;
+    return NOWIN;
 }
 
 
