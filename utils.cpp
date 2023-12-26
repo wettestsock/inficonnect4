@@ -79,6 +79,7 @@ board::~board(){
         delete the_board[i]; //deletes each column
 
     //deletes the actual board
+    //hi
     delete[] the_board;
 
 }
