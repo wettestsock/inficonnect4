@@ -103,7 +103,7 @@ void board::debug() {
 
 short int board::move_win(const int& col_pos, const char& player_id){
     
-    // if hits 3 (connect 4) then wins
+    // if hits 3 (connect 4) then winfdks
     
     //iterates till the last free block
     int row_pos = -1;
