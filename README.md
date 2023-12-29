@@ -23,27 +23,21 @@
 
 
 # <p align='center'> compilation </p>
-<p align='center'> `g++/clang++ main.cpp utils.cpp -o out/out` </p>
+<p align='center'>  g++/clang++ main.cpp utils.cpp -o out/out  </p>
 
 # <p align='center'> requirements </p>
 <p align='center'> terminal with a UTF-8 encoding (to support the cool box effects) </p>
 
 # <p align='center'> FOR WINDOWS USERS ON TERMINAL </p>
-<p align='center'>the command prompt might not show unicode characters properly<br> </p>
-<p align='center'> the lazy fix is to type `chcp 65001` on every terminal boot<br></p>
+<p align='center'>the command prompt might not show unicode characters properly</p>
+<p align='center'> the lazy fix is to type `chcp 65001` on every terminal boot</p>
 <p align='center'>further information to fix this can be found [here](https://stackoverflow.com/questions/388490/how-can-i-use-unicode-characters-on-the-windows-command-line)</p>
 
 
 
+# <p align='center'> notes </p> # 
 
-
-
-
-
-
-# notes # 
-
-smaller project for a future one -
+<p align='center'> smaller project for a future one -
 multidimensional connect 4
 
 gonna train a neural network to play against itself
