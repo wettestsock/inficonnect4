@@ -21,10 +21,10 @@ connect4 but expanded-
 ![2023-12-17_20-14](https://github.com/wettestsock/inficonnect4/assets/119987092/eab01695-b269-4171-aae9-7f1f40e55bca)
 
 
-# <p align='center'> compilation </p>
+# <p align='center'> COMPLIATION </p>
 g++/clang++ main.cpp utils.cpp -o out/out
 
-# <p align='center'> requirements </p>
+# <p align='center'> REQUIREMENTS </p>
 terminal with a UTF-8 encoding (to support the cool box effects)
 
 # <p align='center'> FOR WINDOWS USERS ON TERMINAL </p>
@@ -40,7 +40,7 @@ further information to fix this can be found [here](https://stackoverflow.com/qu
 
 
 
-# notes # 
+# <p align='center'> NOTES </p> # 
 
 smaller project for a future one -
 multidimensional connect 4
