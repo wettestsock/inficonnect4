@@ -18,13 +18,13 @@ int main(){
 ▄ - \u2584
 */
 
-std::cout << N << N << big_text(" hello 4 ") ;
+std::cout << N << N << big_text("infinite connect 4 ") ;
 
 std::cout << "\u2588\n\u2588 Connect 4 but you decide how to play it." << N << "\u2588 I decided to make a more advanced, OOP, Connect 4." << N;
 std::cout << "\u2588 Planning on training a neural network that"<< N << "\u2588 can fight itself in 100+ columns/rows." << N << "\u2588 "<< N;
 std::cout << "\u2588 Highly scalable and foolproof."<< N << "\u2588 You won't crash this thing." << N << "\u2588" << N;
     int player_num; //amount of players
-    int columns, rows;  //rows and columns input
+    int columns, rows;  //rows and colum2ns input
     std::vector<char> char_id;   //all player char ids
     std::vector<std::string> name_id; //all name ids (ordered to char ids)
 
