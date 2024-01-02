@@ -177,6 +177,7 @@ std::cout << "\u2588 Highly scalable and foolproof."<< N << "\u2588 You won't cr
                 // DEBUG, REMOVE LATER
                 //}else if (move ==0) {
                 //    return 0;
+                //sdkljf
 
                 //if input out of range
                 } else if (move < 1 || move > columns) {  
