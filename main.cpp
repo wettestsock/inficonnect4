@@ -18,7 +18,7 @@ int main(){
 ▄ - \u2584
 */
 
-std::cout << N << N << big_text(" infinite connect 4 ") ;
+std::cout << N << N << big_text(" hello 4 ") ;
 
 std::cout << "\u2588\n\u2588 Connect 4 but you decide how to play it." << N << "\u2588 I decided to make a more advanced, OOP, Connect 4." << N;
 std::cout << "\u2588 Planning on training a neural network that"<< N << "\u2588 can fight itself in 100+ columns/rows." << N << "\u2588 "<< N;
